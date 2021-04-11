@@ -28,7 +28,6 @@ class SettingsViewController: UIViewController {
     
     var delegate: SettingsViewControllerDelegate!
     
-    
     // MARK: - Override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,6 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - IBAction
-    
     @IBAction func doneButton() {
         view.endEditing(true)
         delegate.setNewColor(for: colorView.backgroundColor!)
@@ -95,7 +93,6 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-   
         
     // Сокращение строки преобразования Значения слайдера в Стринг с округлением до 2-х знаков после запятой
     private func string(from slider: UISlider) -> String {

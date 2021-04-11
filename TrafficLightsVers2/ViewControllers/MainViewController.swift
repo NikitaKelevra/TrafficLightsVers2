@@ -13,11 +13,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet var mainView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsVC = segue.destination as! SettingsViewController
         settingsVC.rgbMainSettings = mainView.backgroundColor
@@ -28,7 +23,6 @@ class MainViewController: UIViewController {
 protocol SettingsViewControllerDelegate {
     func setNewColor(for viewColor: UIColor)
 }
-
 
 extension MainViewController: SettingsViewControllerDelegate {
     func setNewColor(for viewColor: UIColor) {
