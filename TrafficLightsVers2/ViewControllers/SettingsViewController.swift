@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController {
         colorView.layer.cornerRadius = 15
         
         getColor()
-        setColor()
+       // setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
         redTextField.delegate = self
         greenTextField.delegate = self
@@ -85,10 +85,13 @@ class SettingsViewController: UIViewController {
             switch label {
             case redLabel:
                 label.text = string(from: redSlider)
+                redTextField.text = string(from: redSlider)
             case greenLabel:
                 label.text = string(from: greenSlider)
+                greenTextField.text = string(from: greenSlider)
             default:
                 label.text = string(from: blueSlider)
+                blueTextField.text = string(from: blueSlider)
             }
         }
     }
@@ -113,6 +116,5 @@ extension SettingsViewController: UITextFieldDelegate {
         }
         setColor()
         setValue()
-       
     }
 }

@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsVC = segue.destination as! SettingsViewController
-        settingsVC.delegate = self
         settingsVC.rgbMainSettings = mainView.backgroundColor
+        settingsVC.delegate = self
     }
 }
 
