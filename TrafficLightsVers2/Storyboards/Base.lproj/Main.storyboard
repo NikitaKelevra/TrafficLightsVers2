@@ -191,11 +191,14 @@
                     <connections>
                         <outlet property="blueLabel" destination="aoH-T4-OkV" id="mMI-4J-TN4"/>
                         <outlet property="blueSlider" destination="jK5-Kf-Tss" id="qLh-7B-LhM"/>
+                        <outlet property="blueTextField" destination="qbc-bF-3cQ" id="Xhs-H9-RVh"/>
                         <outlet property="colorView" destination="2OS-IP-NXo" id="Fy1-bL-Hiv"/>
                         <outlet property="greenLabel" destination="KBu-VP-Aki" id="XIg-JE-Ad3"/>
                         <outlet property="greenSlider" destination="wXp-NY-yAS" id="9Oa-k6-Fsb"/>
+                        <outlet property="greenTextField" destination="rk4-Fq-f54" id="e6O-3O-K48"/>
                         <outlet property="redLabel" destination="KMf-pC-fh3" id="XRp-qT-DEv"/>
                         <outlet property="redSlider" destination="sWK-E3-9Bb" id="lhM-fD-LOS"/>
+                        <outlet property="redTextField" destination="OK5-Gl-xW6" id="T7m-Mf-RUa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggu-RR-j08" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

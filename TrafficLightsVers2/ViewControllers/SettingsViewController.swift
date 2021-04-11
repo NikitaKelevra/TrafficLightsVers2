@@ -20,30 +20,36 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
         
+    @IBOutlet weak var redTextField: UITextField!
+    @IBOutlet weak var greenTextField: UITextField!
+    @IBOutlet weak var blueTextField: UITextField!
+    
     var rgbMainSettings:(UIColor)!
     
     var delegate: SettingsViewControllerDelegate!
     
+    
+    // MARK: - Override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         colorView.layer.cornerRadius = 15
         
-        colorView.backgroundColor = rgbMainSettings //присваивание маленькой вьюшке цвета View MainVC
-        //setColor()
+        getColor()
+        setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
     }
     
     // MARK: - IBAction
     
-    
     @IBAction func doneButton() {
-        //view.endEditing(true)
+        view.endEditing(true)
         delegate.setNewColor(for: colorView.backgroundColor!)
         dismiss(animated: true)
     }
-    
-    
     
     //Реакция на движение слайдера
     @IBAction func rgbSlider(_ sender: UISlider) {
@@ -55,8 +61,15 @@ class SettingsViewController: UIViewController {
         default: setValue(for: blueLabel)
         }
     }
-    
+   
+    // MARK: - Private function
     //Установка цвета в зависимости от значения слайдера
+    
+    private func getColor() {
+        colorView.backgroundColor = rgbMainSettings //присваивание маленькой вьюшке цвета View MainVC
+        //redSlider.value = rgbMainSettings(UIColor.red)
+    }
+    
     private func setColor() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -86,4 +99,20 @@ class SettingsViewController: UIViewController {
         String(format: "%.2f", slider.value)
     }
 
+}
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let newValue = textField.text else { return }
+        guard let numberValue = Float(newValue) else { return }
+        
+        switch textField {
+        case redTextField: redSlider.value = numberValue
+        case greenTextField: greenSlider.value = numberValue
+        default: blueSlider.value = numberValue
+        }
+        setColor()
+        setValue()
+       
+    }
 }
