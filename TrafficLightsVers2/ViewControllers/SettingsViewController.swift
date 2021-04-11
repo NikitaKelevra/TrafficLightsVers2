@@ -16,22 +16,25 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var greenLabel: UILabel!
     @IBOutlet weak var blueLabel: UILabel!
     
-    
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    var rgbMainSettings:(UIColor)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         colorView.layer.cornerRadius = 15
         
-        setColor()
+        colorView.backgroundColor = rgbMainSettings
+        //setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
     }
     
     // MARK: - IBAction
+    
+    //Реакция на движение слайдера
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
@@ -42,6 +45,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    //Установка цвета в зависимости от значения слайдера
     private func setColor() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -51,6 +55,7 @@ class SettingsViewController: UIViewController {
         )
     }
     
+    // Показ текущих значений слайдера в лейблах слева
     private func setValue(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
@@ -65,7 +70,7 @@ class SettingsViewController: UIViewController {
     }
    
         
-    // Значения RGB
+    // Сокращение строки преобразования Значения слайдера в Стринг с округлением до 2-х знаков после запятой
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
