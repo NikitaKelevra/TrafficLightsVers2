@@ -19,20 +19,31 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
-    
+        
     var rgbMainSettings:(UIColor)!
+    
+    var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         colorView.layer.cornerRadius = 15
         
-        colorView.backgroundColor = rgbMainSettings
+        colorView.backgroundColor = rgbMainSettings //присваивание маленькой вьюшке цвета View MainVC
         //setColor()
         setValue(for: redLabel, greenLabel, blueLabel)
     }
     
     // MARK: - IBAction
+    
+    
+    @IBAction func doneButton() {
+        //view.endEditing(true)
+        delegate.setNewColor(for: colorView.backgroundColor!)
+        dismiss(animated: true)
+    }
+    
+    
     
     //Реакция на движение слайдера
     @IBAction func rgbSlider(_ sender: UISlider) {
